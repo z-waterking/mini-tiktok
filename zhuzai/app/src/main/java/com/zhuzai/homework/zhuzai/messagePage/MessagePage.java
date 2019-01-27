@@ -1,6 +1,7 @@
 package com.zhuzai.homework.zhuzai.messagePage;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,8 +49,9 @@ public class MessagePage extends BaseFragment implements MassageAdpter.ListItemC
     }
     @Override
     public void onListItemClick(int clickedItemIndex) {
-//        Intent intent = new Intent(MessagePage.this,chatActivity.class);
-//        intent.putExtra("Icon",messages.get(clickedItemIndex).getIcon());
-//        startActivity(intent);
+        Intent intent = new Intent(getContext(), ChatRoom.class);
+        intent.putExtra("chat_icon",messages.get(clickedItemIndex).getIcon());
+        intent.putExtra("chat_target", messages.get(clickedItemIndex).getTitle());
+        startActivity(intent);
  }
 }
