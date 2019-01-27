@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhuzai.homework.zhuzai.homePage.HomePage;
+import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
+import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         initEvent();
         setSelected(0);
-
     }
-
 
     private void initView(){
         viewPager = findViewById(R.id.view_pager);
@@ -47,9 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         about = findViewById(R.id.tab_aboutme);
         recommend = findViewById(R.id.tab_recommend);
         massage = findViewById(R.id.tab_massage);
-        Fragment firstPageFragment = new MessagePage();
+        //四个页面用Fragment进行传递
+        Fragment homePageFragment = new HomePage();
+        Fragment recommendPageFragment = new RecommendPage();
+        Fragment messagePageFragment = new MessagePage();
+        Fragment mePageFragment = new MePage();
         list = new ArrayList<>();
-        list.add(firstPageFragment);
+        list.add(homePageFragment);
+        list.add(recommendPageFragment);
+        list.add(messagePageFragment);
+        list.add(mePageFragment);
 
         myPagerAdpter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -96,23 +104,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.tab_firstpage:
                 firstPage.setTextColor(getResources().getColor(R.color.tab_press));
-                viewPager.setCurrentItem(0,false);;
+                viewPager.setCurrentItem(0,false);
                 break;
             case R.id.tab_recommend:
                 recommend.setTextColor(getResources().getColor(R.color.tab_press));
-                //viewPager.setCurrentItem(1,false);;
+                viewPager.setCurrentItem(1,false);
                 break;
             case R.id.tab_video:
-
                 //     setSelected(1);
                 break;
             case R.id.tab_massage:
                 massage.setTextColor(getResources().getColor(R.color.tab_press));
-                //    setSelected(1);
+                viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tab_aboutme:
                 about.setTextColor(getResources().getColor(R.color.tab_press));
                 //   setSelected(1);
+                viewPager.setCurrentItem(3,false);
                 break;
             default:break;
         }
@@ -142,5 +150,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onKeyDown(keyCode,event);
     }
-
 }
