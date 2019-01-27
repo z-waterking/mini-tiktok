@@ -1,5 +1,6 @@
 package com.zhuzai.homework.zhuzai;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import com.zhuzai.homework.zhuzai.homePage.HomePage;
 import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
+import com.zhuzai.homework.zhuzai.records.FaceDetect_MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,16 +113,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewPager.setCurrentItem(1,false);
                 break;
             case R.id.tab_video:
-                //     setSelected(1);
+                Intent it = new Intent(this, FaceDetect_MainActivity.class);
+                startActivity(it);
                 break;
             case R.id.tab_massage:
                 massage.setTextColor(getResources().getColor(R.color.tab_press));
                 viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tab_aboutme:
-                about.setTextColor(getResources().getColor(R.color.tab_press));
-                //   setSelected(1);
-                viewPager.setCurrentItem(3,false);
+//                about.setTextColor(getResources().getColor(R.color.tab_press));
+//                //   setSelected(1);
+//                viewPager.setCurrentItem(3,false);
+//
+                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
+                startActivity(it2);
                 break;
             default:break;
         }
