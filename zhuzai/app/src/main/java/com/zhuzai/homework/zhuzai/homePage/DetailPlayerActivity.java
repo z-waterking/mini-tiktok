@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -14,10 +15,15 @@ import com.shuyu.gsyvideoplayer.GSYBaseActivityDetail;
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.zhuzai.homework.zhuzai.R;
+import com.zhuzai.homework.zhuzai.bean.Content;
 import com.zhuzai.homework.zhuzai.bean.Feed;
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
+import com.zhuzai.homework.zhuzai.bean.Recommend_Feed;
+import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
 import com.zhuzai.homework.zhuzai.homePage.adapter.RecommendAdapter;
 import com.zhuzai.homework.zhuzai.utils.NetworkUtils;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +43,9 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
     private String title;
     private String url_image;
     private RecyclerView mRv;
+    private TextView content;
     private RecommendAdapter mAdapter;
-    private List<Feed> mFeeds = new ArrayList<>();
+    private List<Recommend_Feed> mFeeds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +56,7 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         url_video = it.getStringExtra("video_url");
         title = it.getStringExtra("user_name");
         url_image = it.getStringExtra("image_url");
-
+        content = (TextView) findViewById(R.id.content);
         detailPlayer = (StandardGSYVideoPlayer) findViewById(R.id.detail_player);
         //增加title
         detailPlayer.getTitleTextView().setVisibility(View.GONE);
@@ -59,7 +66,7 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         //初始化RecyclerView
         initRecyclerView();
         //取得推荐数据
-        fetch_Recommend_Feed();
+        fetch_Recommend_Feed_by_video_url();
     }
 
 
@@ -79,22 +86,34 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         //设置Adapter
         mRv.setAdapter(mAdapter);
     }
-    public void fetch_Recommend_Feed() {
+    public void fetch_Recommend_Feed_by_video_url() {
         // if success, assign data to mFeeds and call mRv.getAdapter().notifyDataSetChanged()
         // don't forget to call resetRefreshBtn() after response received
-        NetworkUtils.getResponseWithRetrofitAsync_Recommend_Feed(new Callback<FeedResponse>() {
-            @Override public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
+        NetworkUtils.getResponseWithRetrofitAsync_Recommend_Feed_by_video_url(new Callback<Recommend_Feed_Response>() {
+            @Override public void onResponse(Call<Recommend_Feed_Response> call, Response<Recommend_Feed_Response> response) {
                 //接收到返回值，开始进行处理。
-                FeedResponse recommend_feeds = response.body();
-                mFeeds = recommend_feeds.getFeeds();
+                Recommend_Feed_Response recommend_feeds = response.body();
+                mFeeds = recommend_feeds.getRecommend_feeds();
                 mAdapter.update_Recommend_Feeds(mFeeds);
                 mRv.setAdapter(mAdapter);
             }
 
-            @Override public void onFailure(Call<FeedResponse> call, Throwable t) {
+            @Override public void onFailure(Call<Recommend_Feed_Response> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
+        }, url_video);
+
+        NetworkUtils.getResponseWithRetrofitAsync_Content_by_video_url(new Callback<Content>() {
+            @Override public void onResponse(Call<Content> call, Response<Content> response) {
+                //接收到返回值，开始进行处理。
+                Content ct = response.body();
+                content.setText(ct.getContent());
+            }
+
+            @Override public void onFailure(Call<Content> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }, url_video);
     }
 
     @Override

@@ -13,18 +13,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.zhuzai.homework.zhuzai.R;
 import com.zhuzai.homework.zhuzai.bean.Feed;
+import com.zhuzai.homework.zhuzai.bean.Recommend_Feed;
 
 import java.util.List;
 
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.MyViewHolder>{
 
-    public List<Feed> mData;
+    public List<Recommend_Feed> mData;
     private final ListItemClickListener mOnClickListener;
-    public RecommendAdapter(List<Feed> data, ListItemClickListener listener){
+    public RecommendAdapter(List<Recommend_Feed> data, ListItemClickListener listener){
         mData = data;
         mOnClickListener = listener;
     }
-    public void update_Recommend_Feeds(List<Feed> feeds){
+    public void update_Recommend_Feeds(List<Recommend_Feed> feeds){
         mData = feeds;
     }
     @NonNull

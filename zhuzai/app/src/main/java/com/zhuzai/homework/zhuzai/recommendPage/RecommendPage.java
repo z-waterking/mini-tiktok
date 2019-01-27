@@ -30,8 +30,9 @@ public class RecommendPage extends BaseFragment implements RecommendAdapter.List
     //定义本身的View和RecyclerView
     private View view;
     private RecyclerView mRv;
-    private List<Feed> mFeeds = new ArrayList<>();
+    private List<Recommend_Feed> mFeeds = new ArrayList<>();
     private RecommendAdapter mAdapter;
+    private String myID = "zsf";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.activity_recommend_page, container, false);
@@ -61,19 +62,19 @@ public class RecommendPage extends BaseFragment implements RecommendAdapter.List
     public void fetch_Recommend_Feed() {
         // if success, assign data to mFeeds and call mRv.getAdapter().notifyDataSetChanged()
         // don't forget to call resetRefreshBtn() after response received
-        NetworkUtils.getResponseWithRetrofitAsync_Recommend_Feed(new Callback<FeedResponse>() {
-            @Override public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
+        NetworkUtils.getResponseWithRetrofitAsync_Recommend_Feed_by_user_id(new Callback<Recommend_Feed_Response>() {
+            @Override public void onResponse(Call<Recommend_Feed_Response> call, Response<Recommend_Feed_Response> response) {
                 //接收到返回值，开始进行处理。
-                FeedResponse recommend_feeds = response.body();
-                mFeeds = recommend_feeds.getFeeds();
+                Recommend_Feed_Response recommend_feeds = response.body();
+                mFeeds = recommend_feeds.getRecommend_feeds();
                 mAdapter.update_Recommend_Feeds(mFeeds);
                 mRv.setAdapter(mAdapter);
             }
 
-            @Override public void onFailure(Call<FeedResponse> call, Throwable t) {
+            @Override public void onFailure(Call<Recommend_Feed_Response> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
+        }, myID);
     }
 
     @Override

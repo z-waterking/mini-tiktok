@@ -11,12 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.zhuzai.homework.zhuzai.R;
+import com.zhuzai.homework.zhuzai.bean.Chat;
+import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 import com.zhuzai.homework.zhuzai.messagePage.model.ChatMessage;
+import com.zhuzai.homework.zhuzai.utils.NetworkUtils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChatRoom extends AppCompatActivity {
     //聊天对象名称
@@ -81,18 +89,39 @@ public class ChatRoom extends AppCompatActivity {
                     myMessage.setIcon("TYPE_USER");
                     myMessage.setContent(content);
                     mAdapter.Add_Chat_Message(myMessage);
-                    ChatMessage targetMessage = new ChatMessage();
-                    targetMessage.setIsmyself(false);
-                    targetMessage.setIcon(Icon);
-                    targetMessage.setContent(content);
-                    mAdapter.Add_Chat_Message(targetMessage);
+//                    ChatMessage targetMessage = new ChatMessage();
+//                    targetMessage.setIsmyself(false);
+//                    targetMessage.setIcon(Icon);
+//                    targetMessage.setContent(content);
+//                    mAdapter.Add_Chat_Message(targetMessage);
                     recycleView.setAdapter(mAdapter);
+                    get_chat();
                     //清空编辑框
                     edit_view.setText("");
                     //定位recycle到底部
                     recycleView.smoothScrollToPosition(mAdapter.getItemCount()-1);
                 }
+            }
+        });
+    }
 
+    public void get_chat() {
+        // if success, assign data to mFeeds and call mRv.getAdapter().notifyDataSetChanged()
+        // don't forget to call resetRefreshBtn() after response received
+        NetworkUtils.getResponseWithRetrofitAsync_Chat(new Callback<Chat>() {
+            @Override public void onResponse(Call<Chat> call, Response<Chat> response) {
+                //接收到返回值，开始进行处理。
+                Chat chat = response.body();
+                ChatMessage message = new ChatMessage();
+                message.setContent(chat.getContent());
+                message.setIcon(Icon);
+                message.setIsmyself(false);
+                mAdapter.Add_Chat_Message(message);
+                recycleView.setAdapter(mAdapter);
+            }
+
+            @Override public void onFailure(Call<Chat> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
