@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/home_center_button" />
     <TextView
         android:id="@+id/tab_massage"
         android:layout_width="0dp"
