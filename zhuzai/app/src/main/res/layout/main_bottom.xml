@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:padding="5dp"
+    android:layout_height="wrap_content"
+    android:background="	#000000">
+    <TextView
+        android:id="@+id/tab_firstpage"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:text="首页"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/tab_unpress"
+        />
+
+    <TextView
+        android:id="@+id/tab_recommend"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="推荐"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/tab_unpress"/>
+
+    <ImageView
+        android:id="@+id/tab_video"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_launcher_background" />
+    <TextView
+        android:id="@+id/tab_massage"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:text="消息"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/tab_unpress"
+        />
+    <TextView
+        android:id="@+id/tab_aboutme"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:text="我"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/tab_unpress"
+        />
+
+</LinearLayout>
