@@ -1,9 +1,14 @@
 package com.zhuzai.homework.zhuzai.records;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Surface;
@@ -11,13 +16,31 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhuzai.homework.zhuzai.R;
+import com.zhuzai.homework.zhuzai.bean.PostVideoResponse;
+import com.zhuzai.homework.zhuzai.network.IMiniDouyinService;
+import com.zhuzai.homework.zhuzai.utils.ResourceUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_IMAGE;
 import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_VIDEO;
@@ -25,21 +48,29 @@ import static com.zhuzai.homework.zhuzai.records.utils.Utils.getOutputMediaFile;
 
 public class CustomCameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
-    private static final String TAG = "CustomCameraActivity";
     private SurfaceView mSurfaceView;
     private Camera mCamera;
-    private SurfaceHolder surfaceHolder;
-    private MediaRecorder mediaRecorder;
+
     private int CAMERA_TYPE = Camera.CameraInfo.CAMERA_FACING_BACK;
-    private int CAMERA_TYPE_BACK = Camera.CameraInfo.CAMERA_FACING_BACK;
-    private int CAMERA_TYPE_FRONT = Camera.CameraInfo.CAMERA_FACING_FRONT;
-    private int ZOOM = 1;
+
     private boolean isRecording = false;
-    private static final int REQUEST_VIDEO_CAPTURE = 1;
-    private static final int REQUEST_AUDIO_CAPTURE = 10;
-    private static final int REQUEST_EXTERNAL_STORAGE = 101;
 
     private int rotationDegree = 0;
+
+    private SurfaceHolder surfaceHolder;
+
+    private Button button;
+
+    private Uri mSelectedImage;
+    private Uri mSelectedVideo;
+    private String takeVideo;
+    private ProgressBar progressBar;
+    Timer timer = new Timer();
+    private int now=0;
+    private TextView process;
+    private int light=0;
+    private Button light_btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,105 +79,189 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_record_start_record);
-        //设置申请权限
-        //todo 在这里申请相机、存储、音频的权限
-        //在外面已经申请成功了
-        //由于加上了申请权限，所以在此处进行开始。
-        //设置摄像头
-        mCamera = getCamera(CAMERA_TYPE);
+        ActivityCompat.requestPermissions(CustomCameraActivity.this, new String[]{Manifest.permission.RECORD_AUDIO,Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         mSurfaceView = findViewById(R.id.img);
+        mCamera = getCamera(CAMERA_TYPE);
+        progressBar = findViewById(R.id.progressBar);
+        process = findViewById(R.id.process_time);
+        light_btn = findViewById(R.id.btn_picture);
+
+        //todo 给SurfaceHolder添加Callback
         surfaceHolder = mSurfaceView.getHolder();
-        //设置SurfaceHolder
-        surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         surfaceHolder.addCallback(this);
 
-
         findViewById(R.id.btn_picture).setOnClickListener(v -> {
-            //todo 拍一张照片
-            mCamera.takePicture(null, null, mPicture);
+            if(light==0){
+                Camera.Parameters parameters = mCamera.getParameters();
+                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+                mCamera.setParameters(parameters);
+                light=1;
+                light_btn.setText("UNLIGHT");
+            }
+            else{
+                light=0;
+                Camera.Parameters parameters = mCamera.getParameters();
+                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                mCamera.setParameters(parameters);
+                light_btn.setText("LIGHT");
+
+            }
         });
 
+        button = findViewById(R.id.btn_record);
         findViewById(R.id.btn_record).setOnClickListener(v -> {
             //todo 录制，第一次点击是start，第二次点击是stop
             if (isRecording) {
                 //todo 停止录制
-                isRecording = false;
-                mMediaRecorder.stop();
-                mMediaRecorder.reset();
-                releaseMediaRecorder();
-                mMediaRecorder = null;
-                mCamera.lock();
+                timer.cancel();
+                now=0;
+                stop();
             } else {
-                isRecording = true;
                 //todo 录制
+                isRecording=true;
                 mMediaRecorder = new MediaRecorder();
-                //1 将相机资源给MediaReorder使用
-//                mCamera.release();
-                //重新请求相机
-//                mCamera = getCamera(CAMERA_TYPE);
                 mCamera.unlock();
-
                 mMediaRecorder.setCamera(mCamera);
-                //2 设置资源
+
                 mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
                 mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-                //3
                 mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
-                //4
-                mMediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
-//                System.out.println(getOutputMediaFile(MEDIA_TYPE_VIDEO).getAbsolutePath());
-                //5
-                mMediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
+
+                takeVideo  = getOutputMediaFile(MEDIA_TYPE_VIDEO).toString();
+                mMediaRecorder.setOutputFile(takeVideo);
+                mMediaRecorder.setPreviewDisplay(mSurfaceView.getHolder().getSurface());
                 mMediaRecorder.setOrientationHint(rotationDegree);
-                try{
+                button.setText("STOP");
+                try {
                     mMediaRecorder.prepare();
                     mMediaRecorder.start();
-                    System.out.println("start record!");
-                } catch (Exception e){
+                    timer.schedule(task,0,1000);
+                } catch (IOException e) {
                     releaseMediaRecorder();
+                    e.printStackTrace();
                 }
             }
         });
 
         findViewById(R.id.btn_facing).setOnClickListener(v -> {
             //todo 切换前后摄像头
-            if (CAMERA_TYPE == CAMERA_TYPE_BACK){
-                CAMERA_TYPE = CAMERA_TYPE_FRONT;
-            } else {
-                CAMERA_TYPE = CAMERA_TYPE_BACK;
+            if(CAMERA_TYPE==Camera.CameraInfo.CAMERA_FACING_BACK) {
+                releaseCameraAndPreview();
+                CAMERA_TYPE=Camera.CameraInfo.CAMERA_FACING_FRONT;
+                mCamera = getCamera(CAMERA_TYPE);
+                mCamera.stopPreview();
+                startPreview(surfaceHolder);
+
             }
-            mCamera = getCamera(CAMERA_TYPE);
-            try{
-                mCamera.setPreviewDisplay(surfaceHolder);
-                mCamera.startPreview();
-            } catch (IOException e){
-                Log.d(TAG, "Transform Failed!");
+            else{
+                releaseCameraAndPreview();
+                CAMERA_TYPE=Camera.CameraInfo.CAMERA_FACING_BACK;
+                mCamera = getCamera(CAMERA_TYPE);
+                mCamera.stopPreview();
+                startPreview(surfaceHolder);
             }
 
         });
 
         findViewById(R.id.btn_zoom).setOnClickListener(v -> {
             //todo 调焦，需要判断手机是否支持
+            Camera.Parameters p = mCamera.getParameters();
 
-            //开启闪光灯
-            Camera.Parameters mParameters;
-            mParameters = mCamera.getParameters();
-            List<String> FlashModes = mParameters.getSupportedFlashModes();
-            if(FlashModes.contains(Camera.Parameters.FLASH_MODE_TORCH))
-            {
-                mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-                mCamera.setParameters(mParameters);
-            }
-            //焦距变大
-            if(mCamera.getParameters().isZoomSupported()){
-                //若支持，则进行放大
-                Camera.Parameters mParams=mCamera.getParameters();
-                ZOOM = ZOOM + 5;
-                mParams.setZoom(ZOOM);
-                mCamera.setParameters(mParams);
-            }
+            p.setZoom(5);
+            mCamera.setParameters(p);
         });
+    }
+
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+
+            runOnUiThread(new Runnable() {      // UI thread
+                @Override
+                public void run() {
+                    now++;
+                    progressBar.setProgress(now);
+                    if(now==10)
+                    {
+                        timer.cancel();
+                        now=0;
+                        stop();
+                    }
+                    process.setText(String.valueOf(now));
+                }
+            });
+        }
+    };
+
+    private  void stop()
+    {
+        isRecording = false;
+        mMediaRecorder.stop();
+        mMediaRecorder.reset();
+        mMediaRecorder.release();
+        mMediaRecorder=null;
+        System.out.println("finished");
+        button.setText("RECORD");
+        mCamera.lock();
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Picture"),1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && null != data) {
+
+            if (requestCode == 1) {
+                mSelectedImage = data.getData();
+                Log.d("URL_image",mSelectedImage.toString());
+                mSelectedVideo = Uri.parse(takeVideo);
+                Log.d("takevideo",takeVideo);
+                Log.d("URL_video",mSelectedVideo.toString());
+
+                if(mSelectedImage!=null)
+                {
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("http://10.108.10.39:8080/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    retrofit.create(IMiniDouyinService.class).createVideo("1121041953","haochengya",getMultipartFromUri("cover_image",mSelectedImage),getMultipartFromUri1("video",takeVideo)).
+                            enqueue(new Callback<PostVideoResponse>() {
+                                @Override public void onResponse(Call<PostVideoResponse> call, Response<PostVideoResponse> response) {
+                                    if(response.body().isSuccess())
+                                    {
+                                        Log.d("success()", "onResponse() called with: call = [" + call + "], response = [" + response + "]");
+                                    }
+                                }
+
+                                @Override public void onFailure(Call<PostVideoResponse> call, Throwable t) {
+                                    Log.d("fail", "onFailure() called with: call = [" + call + "], t = [" + t + "]");
+                                    t.printStackTrace();
+                                }
+                            });
+                }
+
+            }
+        }
+    }
+    private MultipartBody.Part getMultipartFromUri(String name, Uri uri) {
+        // if NullPointerException thrown, try to allow storage permission in system settings
+        File f = new File(ResourceUtils.getRealPath(CustomCameraActivity.this, uri));
+        Log.d("f.name",f.toString());
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), f);
+        return MultipartBody.Part.createFormData(name, f.getName(), requestFile);
+    }
+    private MultipartBody.Part getMultipartFromUri1(String name, String uri) {
+        // if NullPointerException thrown, try to allow storage permission in system settings
+        File f = new File(uri);
+        Log.d("f.name",f.toString());
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), f);
+        return MultipartBody.Part.createFormData(name, f.getName(), requestFile);
     }
 
     public Camera getCamera(int position) {
@@ -155,20 +270,14 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
             releaseCameraAndPreview();
         }
         Camera cam = Camera.open(position);
-
         //todo 摄像头添加属性，例是否自动对焦，设置旋转方向等
-        //自动对焦
-        Camera.Parameters params = cam.getParameters();
-        List<String> focusModes = params.getSupportedFocusModes();
-        if (focusModes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)){
-            params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
-            cam.setParameters(params);
-        }
-        //旋转方向
-        rotationDegree = getCameraDisplayOrientation(CAMERA_TYPE_BACK);
+        rotationDegree = getCameraDisplayOrientation(CAMERA_TYPE);
         cam.setDisplayOrientation(rotationDegree);
+        Camera.Parameters parameters=cam.getParameters();
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         return cam;
     }
+
 
     private static final int DEGREE_90 = 90;
     private static final int DEGREE_180 = 180;
@@ -212,15 +321,34 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
 
     private void releaseCameraAndPreview() {
         //todo 释放camera资源
-        mCamera.release();
-        mCamera = null;
+        if(mCamera!=null)
+        {
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+        }
+
     }
 
     Camera.Size size;
 
     private void startPreview(SurfaceHolder holder) {
         //todo 开始预览
-        mCamera.startPreview();
+        try {
+            mCamera.setPreviewDisplay(holder);
+            Camera.Parameters parameters = mCamera.getParameters();
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                //竖屏拍照时，需要设置旋转90度，否者看到的相机预览方向和界面方向不相同
+                mCamera.setDisplayOrientation(90);
+                parameters.setRotation(90);
+            } else {
+                mCamera.setDisplayOrientation(0);
+                parameters.setRotation(0);
+            }
+            mCamera.setParameters(parameters);
+            mCamera.startPreview();
+        } catch (Exception e) {
+        }
     }
 
 
@@ -228,25 +356,22 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
 
     private boolean prepareVideoRecorder() {
         //todo 准备MediaRecorder
-
-        return true;
+        mMediaRecorder = new MediaRecorder();
+        if(mMediaRecorder!=null)
+            return true;
+        else
+            return false;
     }
 
 
     private void releaseMediaRecorder() {
         //todo 释放MediaRecorder
-        mMediaRecorder.release();
-        mMediaRecorder = null;
+//        releaseMediaRecorder();
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        try{
-            mCamera.setPreviewDisplay(holder);
-            startPreview(holder);
-        } catch (IOException e){
-            Log.d(TAG, "mCamera Set Failed!");
-        }
+        startPreview(holder);
     }
 
     @Override
@@ -256,9 +381,8 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         //todo 释放Camera和MediaRecorder资源
-        mCamera.stopPreview();
-        mCamera.release();
-        mCamera = null;
+        releaseCameraAndPreview();
+        releaseMediaRecorder();
     }
 
 
@@ -273,7 +397,8 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
             fos.close();
         } catch (IOException e) {
             Log.d("mPicture", "Error accessing file: " + e.getMessage());
-        };
+        }
+
         mCamera.startPreview();
     };
 
@@ -308,6 +433,23 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
             }
         }
         return optimalSize;
+    }
+    class ThreadShow implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3000);
+                Camera.Parameters parameters = mCamera.getParameters();
+                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+                mCamera.setParameters(parameters);
+                mCamera.takePicture(null,null,mPicture);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
 }

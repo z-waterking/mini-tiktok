@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.zhuzai.homework.zhuzai.homePage.HomePage;
 import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
+import com.zhuzai.homework.zhuzai.records.CustomCameraActivity;
 import com.zhuzai.homework.zhuzai.records.FaceDetect_MainActivity;
 
 import java.util.ArrayList;
@@ -155,5 +157,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             System.exit(0);
         }
         return super.onKeyDown(keyCode,event);
+    }
+
+    /**
+     * 以下的几个方法用来，让fragment能够监听touch事件
+     */
+    private ArrayList<MyOnTouchListener> onTouchListeners = new ArrayList<MyOnTouchListener>(
+            10);
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        for (MyOnTouchListener listener : onTouchListeners) {
+            listener.onTouch(ev);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public void registerMyOnTouchListener(MyOnTouchListener myOnTouchListener) {
+        onTouchListeners.add(myOnTouchListener);
+    }
+
+    public void unregisterMyOnTouchListener(MyOnTouchListener myOnTouchListener) {
+        onTouchListeners.remove(myOnTouchListener);
+    }
+
+    public interface MyOnTouchListener {
+        public boolean onTouch(MotionEvent ev);
     }
 }

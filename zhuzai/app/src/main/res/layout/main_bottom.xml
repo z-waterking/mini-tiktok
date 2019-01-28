@@ -27,7 +27,7 @@
         android:textSize="20sp"
         android:textColor="@color/tab_unpress"/>
 
-    <ImageView
+    <Button
         android:id="@+id/tab_video"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -54,6 +54,10 @@
         android:gravity="center"
         android:textSize="20sp"
         android:textColor="@color/tab_unpress"
+        />
+    <com.zhuzai.homework.zhuzai.homePage.Love
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         />
 
 </LinearLayout>
