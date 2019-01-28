@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="昵 称:"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            />
+         <EditText
+             android:id="@+id/name"
+             android:layout_width="0dp"
+             android:layout_weight="5"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="签 名:"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            />
+        <EditText
+            android:id="@+id/say"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="性 别:"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            />
+        <EditText
+            android:id="@+id/fale"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        />
+</LinearLayout>

@@ -37,6 +37,10 @@
             android:name="com.zhuzai.homework.zhuzai.recordsPage.CustomCameraActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         ></activity>
+        <activity
+            android:name="com.zhuzai.homework.zhuzai.mePage.SelfInformation"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

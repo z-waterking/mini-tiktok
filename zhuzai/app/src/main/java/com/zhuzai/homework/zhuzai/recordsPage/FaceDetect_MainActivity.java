@@ -184,6 +184,7 @@ public class FaceDetect_MainActivity extends Activity {
                 FaceDetectHelper.getHelper().destroy();
                 stopPreview();
                 Intent it = new Intent(getApplicationContext(), CustomCameraActivity.class);
+                onDestroy();
                 startActivity(it);
             }
         });

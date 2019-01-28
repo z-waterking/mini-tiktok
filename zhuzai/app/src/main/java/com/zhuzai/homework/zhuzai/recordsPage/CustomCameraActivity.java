@@ -92,9 +92,11 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
         surfaceHolder.addCallback(this);
 
         findViewById(R.id.btn_picture).setOnClickListener(v -> {
+
+
             if(light==0){
                 Camera.Parameters parameters = mCamera.getParameters();
-                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                 mCamera.setParameters(parameters);
                 light=1;
                 light_btn.setText("UNLIGHT");
