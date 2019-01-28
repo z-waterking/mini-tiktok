@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="216dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/mypage_bg_a1" />
+        android:src="@drawable/mypage_bg_a" />
 
     <!--我的头像，点击左侧头像，可以更改头像，拍摄,上传图片 或者选择drawable中的图片，点击右侧可以编辑我的名字。（抖音号唯一不可编辑）-->
     <RelativeLayout
@@ -33,7 +33,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/mypage_headshot_a1"
+                android:src="@drawable/mypage_headshot_a"
                 />
         </FrameLayout>
         <TextView
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@drawable/mypage_bg_a5"/>
+        android:src="@drawable/mypage_bg_a"/>
 </LinearLayout>
 </ScrollView>
 
