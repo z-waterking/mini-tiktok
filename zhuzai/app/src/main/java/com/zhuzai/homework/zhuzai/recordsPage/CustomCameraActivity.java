@@ -1,4 +1,4 @@
-package com.zhuzai.homework.zhuzai.records;
+package com.zhuzai.homework.zhuzai.recordsPage;
 
 import android.Manifest;
 import android.content.Intent;
@@ -42,9 +42,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_IMAGE;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_VIDEO;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.getOutputMediaFile;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.MEDIA_TYPE_IMAGE;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.MEDIA_TYPE_VIDEO;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.getOutputMediaFile;
 
 public class CustomCameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 

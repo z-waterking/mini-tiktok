@@ -78,7 +78,7 @@ std::string jstring2string(JNIEnv *env, jstring src) {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeInit(JNIEnv *env,
+Java_com_zhuzai_homework_zhuzai_recordsPage_FaceDetectHelper_nativeInit(JNIEnv *env,
                                                                        jobject instance) {
 //    Android_JNI_GetEnv();
 
@@ -115,7 +115,7 @@ Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeInit(JNIEnv *env,
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeDetectFace(JNIEnv *env,
+Java_com_zhuzai_homework_zhuzai_recordsPage_FaceDetectHelper_nativeDetectFace(JNIEnv *env,
                                                                              jobject instance,
                                                                              jbyteArray imageByteArr,
                                                                              jint pixelFormat,
@@ -162,7 +162,7 @@ Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeDetectFace(JNIEnv
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeSetFaceDetectModelPath(
+Java_com_zhuzai_homework_zhuzai_recordsPage_FaceDetectHelper_nativeSetFaceDetectModelPath(
         JNIEnv *env, jobject instance, jstring effectModePath_) {
     const char *effectModePath = env->GetStringUTFChars(effectModePath_, 0);
 
@@ -175,7 +175,7 @@ Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeSetFaceDetectMode
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeSetLicense(JNIEnv *env,
+Java_com_zhuzai_homework_zhuzai_recordsPage_FaceDetectHelper_nativeSetLicense(JNIEnv *env,
                                                                              jobject instance,
                                                                              jstring license_) {
     const char *license = env->GetStringUTFChars(license_, 0);
@@ -189,18 +189,17 @@ Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeSetLicense(JNIEnv
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeUnInit(JNIEnv *env,
+Java_com_zhuzai_homework_zhuzai_recordsPage_FaceDetectHelper_nativeUnInit(JNIEnv *env,
                                                                          jobject instance) {
     if (mFaceDetectHelper != NULL) {
         delete mFaceDetectHelper;
         mFaceDetectHelper = NULL;
     }
-
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_zhuzai_homework_zhuzai_records_FaceDetectHelper_nativeTestWriteBmp(JNIEnv *env,
+Java_com_zhuzai_homework_zhuzai_recordsPage_FaceDetectHelper_nativeTestWriteBmp(JNIEnv *env,
                                                                                jobject instance) {
     if (mFaceDetectHelper != NULL) {
         mFaceDetectHelper->writeBMP();

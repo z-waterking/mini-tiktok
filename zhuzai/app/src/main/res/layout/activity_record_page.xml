@@ -45,7 +45,8 @@
         android:layout_height="60dp"
         android:layout_gravity="right|bottom"/>
 
-    <com.zhuzai.homework.zhuzai.records.DrawImageView
+    <com.zhuzai.homework.zhuzai.recordsPage.DrawImageView
+
         android:id="@+id/paint_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

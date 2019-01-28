@@ -1,4 +1,4 @@
-package com.zhuzai.homework.zhuzai.records.utils;
+package com.zhuzai.homework.zhuzai.recordsPage.utils;
 
 
 import android.annotation.TargetApi;

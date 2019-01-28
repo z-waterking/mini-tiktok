@@ -95,7 +95,7 @@ public class ChatRoom extends AppCompatActivity {
 //                    targetMessage.setContent(content);
 //                    mAdapter.Add_Chat_Message(targetMessage);
                     recycleView.setAdapter(mAdapter);
-                    get_chat();
+                    get_chat(content);
                     //清空编辑框
                     edit_view.setText("");
                     //定位recycle到底部
@@ -105,7 +105,8 @@ public class ChatRoom extends AppCompatActivity {
         });
     }
 
-    public void get_chat() {
+//根据当前聊天框取得内容
+    public void get_chat(String content) {
         // if success, assign data to mFeeds and call mRv.getAdapter().notifyDataSetChanged()
         // don't forget to call resetRefreshBtn() after response received
         NetworkUtils.getResponseWithRetrofitAsync_Chat(new Callback<Chat>() {
@@ -117,13 +118,15 @@ public class ChatRoom extends AppCompatActivity {
                 message.setIcon(Icon);
                 message.setIsmyself(false);
                 mAdapter.Add_Chat_Message(message);
-                recycleView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+//                recycleView.setAdapter(mAdapter);
+                recycleView.smoothScrollToPosition(mAdapter.getItemCount()-1);
             }
 
             @Override public void onFailure(Call<Chat> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
+        },  content);
     }
 
 }

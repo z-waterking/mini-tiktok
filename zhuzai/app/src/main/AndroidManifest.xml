@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" />
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
@@ -31,7 +31,7 @@
             android:theme="@style/Theme.AppCompat" />
         <activity android:name="com.zhuzai.homework.zhuzai.messagePage.ChatRoom" />
         <activity
-            android:name="com.zhuzai.homework.zhuzai.records.FaceDetect_MainActivity"
+            android:name="com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
         <activity
             android:name="com.zhuzai.homework.zhuzai.records.CustomCameraActivity"
