@@ -7,15 +7,18 @@
     <TextView
         android:id="@+id/detail"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:background="#000000"
         android:gravity="center"
-        android:text="详情页面"/>
+        android:textColor="#FFFFFF"
+        android:text="点我查看详情"/>
     <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
         android:id="@+id/video_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true" />
+
     <ImageView
         android:id="@+id/image_cover"
         android:layout_width="match_parent"

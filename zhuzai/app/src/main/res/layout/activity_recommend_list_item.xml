@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearlayout"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/student_id"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="学生ID"/>
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="用户名"/>
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="内容"/>
+    android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/image_cover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="150dp"
+        android:layout_margin="10dp"
+        android:layout_height="150dp"
+        android:background="#FFFFFF"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/student_id"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="3dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="学生ID"/>
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="3dp"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:text="用户名"/>
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_height="50dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="内容"/>
+    </LinearLayout>
 </LinearLayout>

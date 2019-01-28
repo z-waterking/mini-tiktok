@@ -84,6 +84,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
                 view_iv_avator_right.setImageResource(icon_id);
                 chat_box_right.setVisibility(View.VISIBLE);
                 view_iv_avator_right.setVisibility(View.VISIBLE);
+                //将左边的设置隐藏
+                chat_box_left.setVisibility(View.INVISIBLE);
+                view_iv_avator_left.setVisibility(View.INVISIBLE);
             } else {
                 //填入数据
                 view_iv_content_left.setText(message.getContent().toString());
@@ -92,6 +95,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
                 view_iv_avator_left.setImageResource(icon_id);
                 chat_box_left.setVisibility(View.VISIBLE);
                 view_iv_avator_left.setVisibility(View.VISIBLE);
+                //将右边的设置隐藏
+                chat_box_right.setVisibility(View.INVISIBLE);
+                view_iv_avator_right.setVisibility(View.INVISIBLE);
             }
 
         }
