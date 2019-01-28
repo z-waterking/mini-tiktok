@@ -5,6 +5,7 @@ import com.zhuzai.homework.zhuzai.bean.Content;
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
+import com.zhuzai.homework.zhuzai.bean.PostVideoResponse;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
 import com.zhuzai.homework.zhuzai.bean.Upload_Response;
 
@@ -39,9 +40,18 @@ public interface IMiniDouyinService {
     @GET("get_content") Call<Content> videoContent(
             @Query("video_url") String video_url
     );
+
+
+    @Multipart
+    @POST("minidouyin/video")
+    Call<PostVideoResponse> createVideo(@Query("student_id")String studengtId ,
+                                        @Query("user_name")String userName , @Part MultipartBody.Part cover_image,
+                                        @Part MultipartBody.Part video);
+
     //上传观看的视频url
     @POST("submit_sequence") Call<Upload_Response> video_sequence(
             @Query("video_url") String video_url,
             @Query("user_id") String user_id
     );
+
 }

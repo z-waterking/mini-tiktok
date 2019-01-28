@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:orientation="vertical">
+
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/edit_send_content"
         android:orientation="vertical">
-
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -30,8 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-
-</LinearLayout>
+    </LinearLayout>
     <RelativeLayout
         android:id="@+id/edit_send_content"
         android:layout_width="match_parent"
@@ -61,11 +62,12 @@
 
         <ImageView
             android:id="@+id/btn_send_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
+
             android:gravity="start|center_vertical"
             android:src="@drawable/selector_bg_send" />
     </RelativeLayout>

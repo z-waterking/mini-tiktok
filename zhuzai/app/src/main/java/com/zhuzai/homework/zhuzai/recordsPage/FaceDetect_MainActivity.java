@@ -23,10 +23,14 @@ import android.widget.Toast;
 
 import com.zhuzai.homework.zhuzai.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 import static android.R.attr.targetSdkVersion;
+import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_IMAGE;
+import static com.zhuzai.homework.zhuzai.records.utils.Utils.getOutputMediaFile;
 
 public class FaceDetect_MainActivity extends Activity {
 
@@ -60,8 +64,18 @@ public class FaceDetect_MainActivity extends Activity {
         tv = (TextView) findViewById(R.id.sample_text);
         icon = (ImageView) findViewById(R.id.icon);
         div = (DrawImageView) findViewById(R.id.paint_iv);
-//        icon.setImageResource(R.drawable.diantou);
-//        tv.setText("ooo");
+        mWriteBMPButton = findViewById(R.id.write_bmp_btn);
+        mWriteBMPButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     CameraBufferManager.getCameraBufferManager().release();
+                     FaceDetectHelper.getHelper().destroy();
+                    Camera.Parameters parameters = mCamera.getParameters();
+                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+                    mCamera.setParameters(parameters);
+                  //  mCamera.takePicture(null,null,mPicture);
+            }
+        });
 
         FaceDetectHelper.getHelper().setLicense("TvEbeOPnOCXa62ql1AgSpWADbsODeYUfAz5eo8P+KJPxmD42PeH+UDg1kweybbeXzb3Yj0IHcOtNXMkijk7uJ0n9QS4FnB4Kvp2iKnFDEJ+/wdqGfasiA/3vbvpSakJ79sZG/zt8pMESgPrmaBh59OoMZMpfwAFcibdc/b38KNU=");
         FaceDetectHelper.getHelper().setFaceDetectedCallback(new FaceDetectHelper.OnFaceDetectedCallback() {
@@ -165,26 +179,16 @@ public class FaceDetect_MainActivity extends Activity {
         mSurfaceView = (SurfaceView) findViewById(R.id.preview_view);
         mSurfaceHolder = mSurfaceView.getHolder();
         mSurfaceHolder.addCallback(mSurfaceCallback);
-        mCopyModeButton = findViewById(R.id.copy_model_btn);
-        mCopyModeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initResource();
-            }
-        });
+        initResource();
         mRecordButton = findViewById(R.id.record);
         mRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CameraBufferManager.getCameraBufferManager().release();
+                FaceDetectHelper.getHelper().destroy();
+                stopPreview();
                 Intent it = new Intent(getApplicationContext(), CustomCameraActivity.class);
                 startActivity(it);
-            }
-        });
-        mWriteBMPButton = findViewById(R.id.write_bmp_btn);
-        mWriteBMPButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FaceDetectHelper.getHelper().writeBMP();
             }
         });
     }
@@ -327,4 +331,20 @@ public class FaceDetect_MainActivity extends Activity {
         CameraBufferManager.getCameraBufferManager().release();
         FaceDetectHelper.getHelper().destroy();
     }
+
+    private Camera.PictureCallback mPicture = (data, camera) -> {
+        File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+        if (pictureFile == null) {
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            fos.write(data);
+            fos.close();
+        } catch (IOException e) {
+            Log.d("mPicture", "Error accessing file: " + e.getMessage());
+        }
+
+        mCamera.startPreview();
+    };
 }

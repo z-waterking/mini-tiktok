@@ -17,37 +17,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/copy_model_btn"
+    <LinearLayout android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="拷贝模型文件" />
-
-    <Button
-        android:id="@+id/write_bmp_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="写BMP文件" />
-
-    <Button
-        android:id="@+id/record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center|bottom"
-        android:text="录像"/>
+        >
+        <Button
+            android:id="@+id/write_bmp_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="拍摄" />
+
+        <Button
+            android:id="@+id/record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:text="录像"/>
+
+
+        </LinearLayout>
+
     <ImageView
         android:id="@+id/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="right|bottom"/>
+
     <com.zhuzai.homework.zhuzai.recordsPage.DrawImageView
+
         android:id="@+id/paint_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerVertical="true"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_centerVertical="true" />
+        android:layout_marginLeft="1dp" />
 </FrameLayout>

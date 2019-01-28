@@ -105,6 +105,7 @@ public class ChatRoom extends AppCompatActivity {
         });
     }
 
+//根据当前聊天框取得内容
     public void get_chat(String content) {
         // if success, assign data to mFeeds and call mRv.getAdapter().notifyDataSetChanged()
         // don't forget to call resetRefreshBtn() after response received
@@ -117,7 +118,9 @@ public class ChatRoom extends AppCompatActivity {
                 message.setIcon(Icon);
                 message.setIsmyself(false);
                 mAdapter.Add_Chat_Message(message);
-                recycleView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+//                recycleView.setAdapter(mAdapter);
+                recycleView.smoothScrollToPosition(mAdapter.getItemCount()-1);
             }
 
             @Override public void onFailure(Call<Chat> call, Throwable t) {

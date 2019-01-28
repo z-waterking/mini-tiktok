@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -26,13 +29,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomePage extends BaseFragment implements MyAdapter.ListItemClickListener{
+public class HomePage extends BaseFragment implements MyAdapter.ListItemClickListener,GestureDetector.OnGestureListener {
     //定义RecyclerView
     private View view;
     private RecyclerView mRv;
     private List<Feed> mFeeds = new ArrayList<>();
     private MyAdapter mAdapter;
     OrientationUtils orientationUtils;
+    private  String TAG = "nihap";
+
+    MainActivity.MyOnTouchListener myOnTouchListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +47,16 @@ public class HomePage extends BaseFragment implements MyAdapter.ListItemClickLis
         System.out.println("Recycler Success!");
         fetchFeed();
         System.out.println("Feed Fetch Success!");
+        final GestureDetector mGestureDetector = new GestureDetector(getActivity(),this);
+        myOnTouchListener = new MainActivity.MyOnTouchListener() {
+            @Override
+            public boolean onTouch(MotionEvent ev) {
+                Log.d("nihao","nihap");
+                mGestureDetector.onTouchEvent(ev);
+                return false;
+            }
+        };
+
         return view;
     }
 
@@ -93,5 +109,39 @@ public class HomePage extends BaseFragment implements MyAdapter.ListItemClickLis
         it.putExtra("image_url", image_url);
         it.putExtra("student_id", student_id);
         startActivity(it);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        Log.d(TAG, "onDown() called with: motionEvent = [" + motionEvent + "]");
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+        Log.d(TAG, "onShowPress() called with: motionEvent = [" + motionEvent + "]");
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        Log.d(TAG, "onSingleTapUp() called with: motionEvent = [" + motionEvent + "]");
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        Log.d(TAG, "onScroll() called with: motionEvent = [" + motionEvent + "], motionEvent1 = [" + motionEvent1 + "], v = [" + v + "], v1 = [" + v1 + "]");
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+        Log.d(TAG, "onLongPress() called with: motionEvent = [" + motionEvent + "]");
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
     }
 }
