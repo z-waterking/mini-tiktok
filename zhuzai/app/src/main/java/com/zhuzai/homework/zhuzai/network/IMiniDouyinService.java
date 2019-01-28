@@ -31,7 +31,9 @@ public interface IMiniDouyinService {
             @Query("video_url") String video_url
     );
     //得到聊天对话
-    @GET("get_reply") Call<Chat> get_chat();
+    @GET("get_reply") Call<Chat> get_chat(
+            @Query("content") String content
+    );
     //取得视频内部的信息
     @GET("get_content") Call<Content> videoContent(
             @Query("video_url") String video_url

@@ -69,13 +69,13 @@ public class NetworkUtils {
                 enqueue(callback);
     }
 
-    public static void getResponseWithRetrofitAsync_Chat(Callback<Chat> callback) {
+    public static void getResponseWithRetrofitAsync_Chat(Callback<Chat> callback, String content) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.1.0.195:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        retrofit.create(IMiniDouyinService.class).get_chat().
+        retrofit.create(IMiniDouyinService.class).get_chat(content).
                 enqueue(callback);
     }
 
