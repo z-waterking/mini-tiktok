@@ -1,4 +1,4 @@
-package com.zhuzai.homework.zhuzai.records;
+package com.zhuzai.homework.zhuzai.recordsPage;
 
 import android.text.TextUtils;
 import android.util.Log;

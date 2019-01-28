@@ -1,4 +1,4 @@
-package com.zhuzai.homework.zhuzai.records;
+package com.zhuzai.homework.zhuzai.recordsPage;
 
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -19,9 +19,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_IMAGE;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_VIDEO;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.getOutputMediaFile;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.MEDIA_TYPE_IMAGE;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.MEDIA_TYPE_VIDEO;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.getOutputMediaFile;
 
 public class CustomCameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 

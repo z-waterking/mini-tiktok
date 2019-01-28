@@ -1,4 +1,4 @@
-package com.zhuzai.homework.zhuzai.records;
+package com.zhuzai.homework.zhuzai.recordsPage;
 
 import android.Manifest;
 import android.app.Activity;

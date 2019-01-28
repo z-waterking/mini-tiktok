@@ -31,7 +31,7 @@
             android:theme="@style/Theme.AppCompat" />
         <activity android:name="com.zhuzai.homework.zhuzai.messagePage.ChatRoom" />
         <activity
-            android:name="com.zhuzai.homework.zhuzai.records.FaceDetect_MainActivity"
+            android:name="com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.zhuzai.homework.zhuzai.records;
+package com.zhuzai.homework.zhuzai.recordsPage;
 
 public class FaceInfo {
     public final static int BEF_EYE_BLINK  = 0x00000002;// eye blink, 眨眼
