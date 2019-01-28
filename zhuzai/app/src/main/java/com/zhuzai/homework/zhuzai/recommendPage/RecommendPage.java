@@ -39,6 +39,7 @@ public class RecommendPage extends BaseFragment implements RecommendAdapter.List
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.activity_recommend_page, container, false);
+        //取得本机的IMEI
         TelephonyManager TelephonyMgr = (TelephonyManager) getContext().getSystemService(TELEPHONY_SERVICE);
         my_user_id = TelephonyMgr.getDeviceId();
         initRecyclerView();
