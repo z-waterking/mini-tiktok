@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tab_aboutme:
 //                about.setTextColor(getResources().getColor(R.color.tab_press));
 //                //   setSelected(1);
-//                viewPager.setCurrentItem(3,false);
+                viewPager.setCurrentItem(3,false);
 //
-                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
-                startActivity(it2);
+//                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
+//                startActivity(it2);
                 break;
             default:break;
         }

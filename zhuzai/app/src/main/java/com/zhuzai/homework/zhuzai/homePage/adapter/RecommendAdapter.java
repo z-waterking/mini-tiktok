@@ -46,11 +46,11 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.MyVi
         holder.user_name = mData.get(position).getUser_name();
         holder.image_url = mData.get(position).getImage_url();
         holder.student_id  = mData.get(position).getStudent_id();
-//        holder.content = mData.get(position).getContent();
+        holder.content = mData.get(position).getContent();
         //设置学生ID，姓名，和视频内容
         holder.user_name_view.setText(holder.user_name);
         holder.student_id_view.setText(holder.student_id);
-//        holder.content_view.setText(holder.content);
+        holder.content_view.setText(holder.content);
         //增加封面
         ImageView imageView = holder.image_cover_view;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);

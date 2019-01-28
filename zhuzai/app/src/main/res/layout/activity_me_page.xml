@@ -75,23 +75,17 @@
     <!--三个IMG 用来展示推荐结果，取到推荐的图片，进行展示-->
 
     <ImageView
-        android:id="@+id/me_page_recommend1"
+        android:id="@+id/word_cloud"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/mypage_bg_a3"/>
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"/>
+        <!--android:src="@drawable/mypage_bg_a3"/>-->
     <ImageView
-        android:id="@+id/me_page_recommend2"
+        android:id="@+id/line"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/mypage_bg_a4"/>
-    <ImageView
-        android:id="@+id/me_page_recommend3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/mypage_bg_a"/>
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"/>
+        <!--android:src="@drawable/mypage_bg_a4"/>-->
 </LinearLayout>
 </ScrollView>
 
