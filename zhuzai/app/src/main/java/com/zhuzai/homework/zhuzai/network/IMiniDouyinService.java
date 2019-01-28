@@ -6,6 +6,7 @@ import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
+import com.zhuzai.homework.zhuzai.bean.Upload_Response;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -37,5 +38,10 @@ public interface IMiniDouyinService {
     //取得视频内部的信息
     @GET("get_content") Call<Content> videoContent(
             @Query("video_url") String video_url
+    );
+    //上传观看的视频url
+    @POST("submit_sequence") Call<Upload_Response> video_sequence(
+            @Query("video_url") String video_url,
+            @Query("user_id") String user_id
     );
 }

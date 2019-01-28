@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,16 +27,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.TELEPHONY_SERVICE;
+
 public class RecommendPage extends BaseFragment implements RecommendAdapter.ListItemClickListener {
     //定义本身的View和RecyclerView
     private View view;
     private RecyclerView mRv;
     private List<Recommend_Feed> mFeeds = new ArrayList<>();
     private RecommendAdapter mAdapter;
-    private String myID = "zsf";
+    private String my_user_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.activity_recommend_page, container, false);
+        TelephonyManager TelephonyMgr = (TelephonyManager) getContext().getSystemService(TELEPHONY_SERVICE);
+        my_user_id = TelephonyMgr.getDeviceId();
         initRecyclerView();
         fetch_Recommend_Feed();
         return view;
@@ -74,7 +79,7 @@ public class RecommendPage extends BaseFragment implements RecommendAdapter.List
             @Override public void onFailure(Call<Recommend_Feed_Response> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
-        }, myID);
+        }, my_user_id);
     }
 
     @Override

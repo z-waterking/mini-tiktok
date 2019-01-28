@@ -4,6 +4,7 @@ import com.zhuzai.homework.zhuzai.bean.Chat;
 import com.zhuzai.homework.zhuzai.bean.Content;
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
+import com.zhuzai.homework.zhuzai.bean.Upload_Response;
 import com.zhuzai.homework.zhuzai.network.IMiniDouyinService;
 
 import java.io.BufferedInputStream;
@@ -66,6 +67,18 @@ public class NetworkUtils {
                 .build();
 
         retrofit.create(IMiniDouyinService.class).videoContent(video_url).
+                enqueue(callback);
+    }
+
+    //实现getResponseWithRetrofitAsync方法用来通过VIDEO_URL请求Recommend_Feed数据
+    public static void getResponseWithRetrofitAsync_Submit_video_sequence(Callback<Upload_Response> callback, String video_url,
+                                                                          String user_id) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.1.0.195:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofit.create(IMiniDouyinService.class).video_sequence(video_url, user_id).
                 enqueue(callback);
     }
 

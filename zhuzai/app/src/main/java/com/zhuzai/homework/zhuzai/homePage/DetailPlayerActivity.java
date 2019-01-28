@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.zhuzai.homework.zhuzai.bean.Feed;
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
+import com.zhuzai.homework.zhuzai.bean.Upload_Response;
 import com.zhuzai.homework.zhuzai.homePage.adapter.RecommendAdapter;
 import com.zhuzai.homework.zhuzai.utils.NetworkUtils;
 
@@ -41,6 +43,7 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
 
     private String url_video;
     private String title;
+    private String my_user_id;
     private String url_image;
     private RecyclerView mRv;
     private TextView content;
@@ -61,6 +64,9 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         //增加title
         detailPlayer.getTitleTextView().setVisibility(View.GONE);
         detailPlayer.getBackButton().setVisibility(View.GONE);
+        //TODO: ZSF 申请读取手机状态的权限，预定打开时将所有权限全部申请完成
+        TelephonyManager TelephonyMgr = (TelephonyManager) getApplicationContext().getSystemService(TELEPHONY_SERVICE);
+        my_user_id = TelephonyMgr.getDeviceId();
 //        loadCover(detailPlayer, url_image);
         initVideoBuilderMode();
         //初始化RecyclerView
@@ -89,6 +95,22 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
     public void fetch_Recommend_Feed_by_video_url() {
         // if success, assign data to mFeeds and call mRv.getAdapter().notifyDataSetChanged()
         // don't forget to call resetRefreshBtn() after response received
+        //上传本视频的url和user_id
+        //取得自己机器的user_id
+        NetworkUtils.getResponseWithRetrofitAsync_Submit_video_sequence(new Callback<Upload_Response>() {
+            @Override public void onResponse(Call<Upload_Response> call, Response<Upload_Response> response) {
+                //接收到返回值，开始进行处理。
+                Upload_Response res = response.body();
+                if(res.isIssuccess()){
+                    Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override public void onFailure(Call<Upload_Response> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }, url_video, my_user_id);
+        //取得推荐列表
         NetworkUtils.getResponseWithRetrofitAsync_Recommend_Feed_by_video_url(new Callback<Recommend_Feed_Response>() {
             @Override public void onResponse(Call<Recommend_Feed_Response> call, Response<Recommend_Feed_Response> response) {
                 //接收到返回值，开始进行处理。
@@ -102,7 +124,7 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         }, url_video);
-
+        //取得视频本身的内容
         NetworkUtils.getResponseWithRetrofitAsync_Content_by_video_url(new Callback<Content>() {
             @Override public void onResponse(Call<Content> call, Response<Content> response) {
                 //接收到返回值，开始进行处理。
