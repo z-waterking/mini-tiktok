@@ -21,20 +21,26 @@
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center|bottom"
+        android:layout_marginBottom="10dp"
         >
-        <Button
+        <com.zhuzai.homework.zhuzai.widget.CircleImageView
             android:id="@+id/write_bmp_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="拍摄" />
-
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/red"
+            />
         <Button
             android:id="@+id/record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:text="录像"/>
+            android:background="#00ffffff"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="录像"
+            android:textColor="#ffffff"
+            android:textSize="17dp"/>
 
 
         </LinearLayout>

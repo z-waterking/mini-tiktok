@@ -34,7 +34,7 @@
             android:name="com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
         <activity
-            android:name="com.zhuzai.homework.zhuzai.records.CustomCameraActivity"
+            android:name="com.zhuzai.homework.zhuzai.recordsPage.CustomCameraActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         ></activity>
     </application>

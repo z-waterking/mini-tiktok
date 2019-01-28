@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:text="light"
             android:textSize="15dp"
+            android:textColor="#ffffff"
             android:background="#00ffffff"/>
 
         <Button
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:text="record"
             android:textSize="15dp"
+            android:textColor="#ffffff"
             android:background="#00ffffff"/>
 
         <Button
@@ -69,6 +71,7 @@
             android:layout_height="wrap_content"
             android:text="facing"
             android:textSize="15dp"
+            android:textColor="#ffffff"
             android:background="#00ffffff"
             />
 
@@ -78,6 +81,7 @@
             android:layout_height="wrap_content"
             android:text="zoom"
             android:textSize="15dp"
+            android:textColor="#ffffff"
             android:background="#00ffffff"/>
 
     </LinearLayout>

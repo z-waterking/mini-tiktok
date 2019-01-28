@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhuzai.homework.zhuzai.R;
+import com.zhuzai.homework.zhuzai.widget.CircleImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,8 +30,8 @@ import java.io.IOException;
 import java.util.List;
 
 import static android.R.attr.targetSdkVersion;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_IMAGE;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.getOutputMediaFile;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.MEDIA_TYPE_IMAGE;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.getOutputMediaFile;
 
 public class FaceDetect_MainActivity extends Activity {
 
@@ -46,7 +47,7 @@ public class FaceDetect_MainActivity extends Activity {
     private SurfaceHolder mSurfaceHolder;
     private ProgressDialog dialog;
     private Button mCopyModeButton;
-    private Button mWriteBMPButton;
+    private CircleImageView mWriteBMPButton;
     private Button mRecordButton;
     private ImageView icon;
     private DrawImageView div;
@@ -68,12 +69,7 @@ public class FaceDetect_MainActivity extends Activity {
         mWriteBMPButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                     CameraBufferManager.getCameraBufferManager().release();
-                     FaceDetectHelper.getHelper().destroy();
-                    Camera.Parameters parameters = mCamera.getParameters();
-                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
-                    mCamera.setParameters(parameters);
-                  //  mCamera.takePicture(null,null,mPicture);
+                FaceDetectHelper.getHelper().writeBMP();
             }
         });
 
@@ -347,4 +343,50 @@ public class FaceDetect_MainActivity extends Activity {
 
         mCamera.startPreview();
     };
+
+    @Override
+    protected void onRestart() {
+        if(mCamera==null||mSurfaceCallback==null) {
+            mSurfaceCallback = new SurfaceHolder.Callback() {
+                @Override
+                public void surfaceCreated(SurfaceHolder surfaceHolder) {
+                    mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
+                    startPreview();
+                    try {
+                        mCamera.setPreviewDisplay(mSurfaceHolder);
+                        mCamera.startPreview();//开始预览
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+                    stopPreview();
+                }
+            };
+            mSurfaceView = (SurfaceView) findViewById(R.id.preview_view);
+            mSurfaceHolder = mSurfaceView.getHolder();
+            mSurfaceHolder.addCallback(mSurfaceCallback);
+            mRecordButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    stopPreview();
+                    Intent it = new Intent(getApplicationContext(), CustomCameraActivity.class);
+                    startActivity(it);
+                }
+            });
+
+        }
+
+
+        super.onRestart();
+
+    }
 }
