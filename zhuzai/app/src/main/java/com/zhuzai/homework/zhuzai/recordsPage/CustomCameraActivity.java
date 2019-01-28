@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhuzai.homework.zhuzai.MainActivity;
 import com.zhuzai.homework.zhuzai.R;
 import com.zhuzai.homework.zhuzai.bean.PostVideoResponse;
 import com.zhuzai.homework.zhuzai.network.IMiniDouyinService;
@@ -92,8 +93,6 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
         surfaceHolder.addCallback(this);
 
         findViewById(R.id.btn_picture).setOnClickListener(v -> {
-
-
             if(light==0){
                 Camera.Parameters parameters = mCamera.getParameters();
                 parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
@@ -237,6 +236,9 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
                                 @Override public void onResponse(Call<PostVideoResponse> call, Response<PostVideoResponse> response) {
                                     if(response.body().isSuccess())
                                     {
+                                        onDestroy();
+                                        Intent it = new Intent(CustomCameraActivity.this, FaceDetect_MainActivity.class);
+                                        startActivity(it);
                                         Log.d("success()", "onResponse() called with: call = [" + call + "], response = [" + response + "]");
                                     }
                                 }

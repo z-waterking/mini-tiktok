@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +18,11 @@ import com.zhuzai.homework.zhuzai.homePage.HomePage;
 import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
-import com.zhuzai.homework.zhuzai.records.CustomCameraActivity;
-import com.zhuzai.homework.zhuzai.records.FaceDetect_MainActivity;
+
+import com.zhuzai.homework.zhuzai.recordsPage.CustomCameraActivity;
+import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
+
+import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,17 +34,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView firstPage;
     private TextView about;
     private TextView recommend;
+    private ImageView takePic;
     private TextView massage;
     private Button video;
     private List<Fragment> list;
     private FragmentPagerAdapter myPagerAdpter;
     private double exitTime = 0.1;
+    private Bundle bundle;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bundle = this.getIntent().getExtras();
         initView();
         initEvent();
         setSelected(0);
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         about = findViewById(R.id.tab_aboutme);
         recommend = findViewById(R.id.tab_recommend);
         massage = findViewById(R.id.tab_massage);
+        takePic = findViewById(R.id.tab_video);
         //四个页面用Fragment进行传递
         Fragment homePageFragment = new HomePage();
         Fragment recommendPageFragment = new RecommendPage();
@@ -91,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+//        if(bundle.getInt("page") == 3)
+//            viewPager.setCurrentItem(bundle.getInt("page"),false);
     }
 
     private void initEvent()
@@ -99,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recommend.setOnClickListener(this);
         about.setOnClickListener(this);
         massage.setOnClickListener(this);
+        takePic.setOnClickListener(this);
     }
 
 
@@ -123,12 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tab_aboutme:
-//                about.setTextColor(getResources().getColor(R.color.tab_press));
-//                //   setSelected(1);
-//                viewPager.setCurrentItem(3,false);
-//
-                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
-                startActivity(it2);
+                about.setTextColor(getResources().getColor(R.color.tab_press));
+                viewPager.setCurrentItem(3,false);
                 break;
             default:break;
         }

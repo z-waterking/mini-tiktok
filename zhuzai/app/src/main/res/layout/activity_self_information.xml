@@ -13,14 +13,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="昵 称:"
+            android:text="昵称:"
             android:textSize="20dp"
             android:layout_marginLeft="10dp"
             />
          <EditText
              android:id="@+id/name"
              android:layout_width="0dp"
-             android:layout_weight="5"
+             android:layout_weight="4"
              android:layout_height="wrap_content"
              android:layout_marginRight="10dp"/>
     </LinearLayout>
@@ -33,14 +33,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="签 名:"
+            android:text="签名:"
             android:textSize="20dp"
             android:layout_marginLeft="10dp"
             />
         <EditText
             android:id="@+id/say"
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
@@ -53,14 +53,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="性 别:"
+            android:text="性别:"
             android:textSize="20dp"
             android:layout_marginLeft="10dp"
             />
         <EditText
             android:id="@+id/fale"
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
