@@ -29,8 +29,8 @@ import java.io.IOException;
 import java.util.List;
 
 import static android.R.attr.targetSdkVersion;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.MEDIA_TYPE_IMAGE;
-import static com.zhuzai.homework.zhuzai.records.utils.Utils.getOutputMediaFile;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.MEDIA_TYPE_IMAGE;
+import static com.zhuzai.homework.zhuzai.recordsPage.utils.Utils.getOutputMediaFile;
 
 public class FaceDetect_MainActivity extends Activity {
 

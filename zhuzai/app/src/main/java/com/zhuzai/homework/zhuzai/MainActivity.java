@@ -17,8 +17,8 @@ import com.zhuzai.homework.zhuzai.homePage.HomePage;
 import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
-import com.zhuzai.homework.zhuzai.records.CustomCameraActivity;
-import com.zhuzai.homework.zhuzai.records.FaceDetect_MainActivity;
+import com.zhuzai.homework.zhuzai.recordsPage.CustomCameraActivity;
+import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
