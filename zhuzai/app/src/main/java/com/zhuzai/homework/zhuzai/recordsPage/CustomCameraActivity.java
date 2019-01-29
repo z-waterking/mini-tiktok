@@ -80,7 +80,6 @@ public class CustomCameraActivity extends AppCompatActivity implements SurfaceHo
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_record_start_record);
-        ActivityCompat.requestPermissions(CustomCameraActivity.this, new String[]{Manifest.permission.RECORD_AUDIO,Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         mSurfaceView = findViewById(R.id.img);
         mCamera = getCamera(CAMERA_TYPE);

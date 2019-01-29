@@ -88,10 +88,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         private StandardGSYVideoPlayer videoPlayer;
         private TextView textView;
         private ImageView imageView;
+        private TextView tv;
         private String student_id;
         private String image_url;
         private String user_name;
         private String video_url;
+        private long exit;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linearlayout);
@@ -99,6 +101,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             imageView = (ImageView) itemView.findViewById(R.id.image_cover);
             textView = (TextView) itemView.findViewById(R.id.detail);
             textView.setOnClickListener(this);
+            tv = (TextView) itemView.findViewById(R.id.dianji);
+            exit = 0;
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("双击","shuangji");
+                    if((System.currentTimeMillis()-exit)>2000) {
+                        exit = System.currentTimeMillis();
+                    }
+                    else {
+                        Log.d("双击","shuangji");
+                        exit = System.currentTimeMillis();
+                    }
+                }
+            });
         }
 
         @Override

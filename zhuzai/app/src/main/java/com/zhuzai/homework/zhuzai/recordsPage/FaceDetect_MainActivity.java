@@ -57,9 +57,7 @@ public class FaceDetect_MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_page);
 
-        if (!selfPermissionGranted(Manifest.permission.CAMERA) || !selfPermissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE) /*|| !selfPermissionGranted(Manifest.permission.RECORD_AUDIO) */) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE/*, Manifest.permission.RECORD_AUDIO*/}, 0);
-        }
+
 
         // Example of a call to a native method
         tv = (TextView) findViewById(R.id.sample_text);

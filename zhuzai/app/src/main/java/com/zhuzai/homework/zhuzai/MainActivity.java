@@ -1,11 +1,15 @@
 package com.zhuzai.homework.zhuzai;
 
+import android.Manifest;
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentPagerAdapter myPagerAdpter;
     private double exitTime = 0.1;
     private Bundle bundle;
+    private GestureDetector gd;
 
 
     @Override
@@ -51,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bundle = this.getIntent().getExtras();
+        gd = new GestureDetector(this,new OnDoubleClick());
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.RECORD_AUDIO,Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+
+
         initView();
         initEvent();
         setSelected(0);
@@ -162,37 +171,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(),"再按一次退出程序",Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             }
-        }
-        else {
-            finish();
-            System.exit(0);
+            else {
+                finish();
+                System.exit(0);
+            }
         }
         return super.onKeyDown(keyCode,event);
     }
 
-    /**
-     * 以下的几个方法用来，让fragment能够监听touch事件
-     */
-    private ArrayList<MyOnTouchListener> onTouchListeners = new ArrayList<MyOnTouchListener>(
-            10);
-
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        for (MyOnTouchListener listener : onTouchListeners) {
-            listener.onTouch(ev);
-        }
-        return super.dispatchTouchEvent(ev);
-    }
-
-    public void registerMyOnTouchListener(MyOnTouchListener myOnTouchListener) {
-        onTouchListeners.add(myOnTouchListener);
-    }
-
-    public void unregisterMyOnTouchListener(MyOnTouchListener myOnTouchListener) {
-        onTouchListeners.remove(myOnTouchListener);
-    }
-
-    public interface MyOnTouchListener {
-        public boolean onTouch(MotionEvent ev);
+    public boolean onTouchEvent(MotionEvent event) {
+        Log.d("touch_phore","touch_phore");
+        return gd.onTouchEvent(event);
     }
 }

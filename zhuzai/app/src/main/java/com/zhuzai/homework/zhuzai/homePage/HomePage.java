@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.zhuzai.homework.zhuzai.BaseFragment;
 import com.zhuzai.homework.zhuzai.MainActivity;
+import com.zhuzai.homework.zhuzai.OnDoubleClick;
 import com.zhuzai.homework.zhuzai.R;
 import com.zhuzai.homework.zhuzai.bean.Feed;
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
@@ -29,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomePage extends BaseFragment implements MyAdapter.ListItemClickListener,GestureDetector.OnGestureListener {
+public class HomePage extends BaseFragment implements MyAdapter.ListItemClickListener{
     //定义RecyclerView
     private View view;
     private RecyclerView mRv;
@@ -37,8 +39,10 @@ public class HomePage extends BaseFragment implements MyAdapter.ListItemClickLis
     private MyAdapter mAdapter;
     OrientationUtils orientationUtils;
     private  String TAG = "nihap";
+    private GestureDetector gd;
+    private double exitTime = 0.1;
 
-    MainActivity.MyOnTouchListener myOnTouchListener;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,15 +51,8 @@ public class HomePage extends BaseFragment implements MyAdapter.ListItemClickLis
         System.out.println("Recycler Success!");
         fetchFeed();
         System.out.println("Feed Fetch Success!");
-        final GestureDetector mGestureDetector = new GestureDetector(getActivity(),this);
-        myOnTouchListener = new MainActivity.MyOnTouchListener() {
-            @Override
-            public boolean onTouch(MotionEvent ev) {
-                Log.d("nihao","nihap");
-                mGestureDetector.onTouchEvent(ev);
-                return false;
-            }
-        };
+
+
 
         return view;
     }
@@ -111,37 +108,5 @@ public class HomePage extends BaseFragment implements MyAdapter.ListItemClickLis
         startActivity(it);
     }
 
-    @Override
-    public boolean onDown(MotionEvent motionEvent) {
-        Log.d(TAG, "onDown() called with: motionEvent = [" + motionEvent + "]");
-        return false;
-    }
 
-    @Override
-    public void onShowPress(MotionEvent motionEvent) {
-        Log.d(TAG, "onShowPress() called with: motionEvent = [" + motionEvent + "]");
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent) {
-        Log.d(TAG, "onSingleTapUp() called with: motionEvent = [" + motionEvent + "]");
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        Log.d(TAG, "onScroll() called with: motionEvent = [" + motionEvent + "], motionEvent1 = [" + motionEvent1 + "], v = [" + v + "], v1 = [" + v1 + "]");
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
-        Log.d(TAG, "onLongPress() called with: motionEvent = [" + motionEvent + "]");
-    }
-
-    @Override
-    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        return false;
-    }
 }
