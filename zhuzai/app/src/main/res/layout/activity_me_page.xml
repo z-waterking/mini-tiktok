@@ -74,23 +74,40 @@
 
     <!--三个IMG 用来展示推荐结果，取到推荐的图片，进行展示-->
 
+    <TextView
+        android:textColor="#cccccc"
+        android:text="词云图展示"
+        android:id="@+id/ciyuntu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="12dp"
+        />
+
     <ImageView
         android:id="@+id/word_cloud"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
         android:src="@drawable/mypage_bg_a3"/>
+
+    <TextView
+        android:textColor="#cccccc"
+        android:text="我的浏览轨迹"
+        android:id="@+id/tuijian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="12dp"
+        />
     <ImageView
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
         android:src="@drawable/mypage_bg_a4"/>
-    <ImageView
-        android:id="@+id/me_page_recommend3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/mypage_bg_a5"/>
+
 </LinearLayout>
 </ScrollView>
