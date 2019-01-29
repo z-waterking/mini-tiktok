@@ -87,12 +87,12 @@ public class FaceDetect_MainActivity extends Activity {
 //                        tv.setText(ret + " " + top + " " + bottom + " " + " " + left + " " + right);
                         icon.setVisibility(View.VISIBLE);
                         switch(ret){
-                            case 2:icon.setImageResource(R.drawable.zhayan);break;
-                            case 4:icon.setImageResource(R.drawable.zhangzui);break;
-                            case 8:icon.setImageResource(R.drawable.yaotou);break;
-                            case 16:icon.setImageResource(R.drawable.diantou);break;
-                            case 32:icon.setImageResource(R.drawable.meimaotiaodong);break;
-                            case 64:icon.setImageResource(R.drawable.zuibadudu);break;
+                            case 2:icon.setImageResource(R.drawable.closeeye);break;
+                            case 4:icon.setImageResource(R.drawable.openmouse);break;
+                            case 8:icon.setImageResource(R.drawable.shakehead);break;
+                            case 16:icon.setImageResource(R.drawable.nod);break;
+                            case 32:icon.setImageResource(R.drawable.eyebrow);break;
+                            case 64:icon.setImageResource(R.drawable.dumouse);break;
                             default:icon.setVisibility(View.INVISIBLE);break;
                         }
 //                        System.out.println("Original");
