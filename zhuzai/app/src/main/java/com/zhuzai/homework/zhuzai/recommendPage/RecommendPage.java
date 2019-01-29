@@ -42,7 +42,7 @@ public class RecommendPage extends BaseFragment implements RecommendAdapter.List
         //取得本机的IMEI
 //        TelephonyManager TelephonyMgr = (TelephonyManager) getContext().getSystemService(TELEPHONY_SERVICE);
 //        my_user_id = TelephonyMgr.getDeviceId();
-        my_user_id = "865873038279224";
+        my_user_id = "zsf";
         initRecyclerView();
         fetch_Recommend_Feed();
         return view;

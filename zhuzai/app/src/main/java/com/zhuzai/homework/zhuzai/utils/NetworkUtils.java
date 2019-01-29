@@ -5,7 +5,6 @@ import com.zhuzai.homework.zhuzai.bean.Content;
 import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
 import com.zhuzai.homework.zhuzai.bean.Upload_Response;
-import com.zhuzai.homework.zhuzai.bean.User_Draw;
 import com.zhuzai.homework.zhuzai.network.IMiniDouyinService;
 
 import java.io.BufferedInputStream;
@@ -90,16 +89,6 @@ public class NetworkUtils {
                 .build();
 
         retrofit.create(IMiniDouyinService.class).get_chat(content).
-                enqueue(callback);
-    }
-
-    public static void getResponseWithRetrofitAsync_User_Draw(Callback<User_Draw> callback, String user_id) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.1.0.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofit.create(IMiniDouyinService.class).user_draw(user_id).
                 enqueue(callback);
     }
 
