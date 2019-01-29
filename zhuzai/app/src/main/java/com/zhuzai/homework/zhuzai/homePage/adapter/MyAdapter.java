@@ -1,5 +1,7 @@
 package com.zhuzai.homework.zhuzai.homePage.adapter;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -59,7 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         ImageView imageView = holder.imageView;
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Glide.with(imageView.getContext()).load(holder.image_url).into(imageView);
-        holder.linearLayout.removeView(imageView);
+        holder.framelayout.removeView(imageView);
         videoPlayer.setThumbImageView(imageView);
         videoPlayer.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -84,11 +87,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         //绑定播放器
-        private LinearLayout linearLayout;
+        private FrameLayout framelayout;
         private StandardGSYVideoPlayer videoPlayer;
         private TextView textView;
         private ImageView imageView;
-        private TextView tv;
+        private ImageView target;
+        private ImageView tv;
         private String student_id;
         private String image_url;
         private String user_name;
@@ -96,12 +100,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         private long exit;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.linearlayout);
+            framelayout = (FrameLayout) itemView.findViewById(R.id.framelayout);
             videoPlayer = (StandardGSYVideoPlayer) itemView.findViewById(R.id.video_player);
             imageView = (ImageView) itemView.findViewById(R.id.image_cover);
             textView = (TextView) itemView.findViewById(R.id.detail);
+            target = (ImageView) itemView.findViewById(R.id.animation);
             textView.setOnClickListener(this);
-            tv = (TextView) itemView.findViewById(R.id.dianji);
+            tv = (ImageView) itemView.findViewById(R.id.dianji);
             exit = 0;
 
             tv.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +119,34 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     else {
                         Log.d("双击","shuangji");
                         exit = System.currentTimeMillis();
+                        //播放动画
+
+                        ObjectAnimator animator_scaleX = ObjectAnimator.ofFloat(target,
+                                "scaleX",
+                                1,
+                                1.5f);
+                        ObjectAnimator animator_scaleY = ObjectAnimator.ofFloat(target,
+                                "scaleY",
+                                1,
+                                1.5f);
+                        animator_scaleX.setDuration(Integer.parseInt("2000"));
+                        animator_scaleX.setRepeatCount(1);
+                        animator_scaleX.setRepeatMode(ObjectAnimator.REVERSE);
+                        animator_scaleY.setDuration(Integer.parseInt("2000"));
+                        animator_scaleY.setRepeatCount(1);
+                        animator_scaleY.setRepeatMode(ObjectAnimator.REVERSE);
+
+                        ObjectAnimator animator_alpha = ObjectAnimator.ofFloat(target,
+                                "alpha",
+                                0f,
+                                1f);
+                        animator_alpha.setDuration(Integer.parseInt("2000"));
+                        animator_alpha.setRepeatCount(1);
+                        animator_alpha.setRepeatMode(ObjectAnimator.REVERSE);
+                        //启动动画
+                        AnimatorSet animatorSet = new AnimatorSet();
+                        animatorSet.playTogether(animator_scaleX, animator_scaleY, animator_alpha);
+                        animatorSet.start();
                     }
                 }
             });

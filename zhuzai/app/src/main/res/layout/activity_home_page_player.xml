@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearlayout"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/framelayout"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:background="#000000"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:text="点我查看详情"/>
-    <TextView
-        android:id="@+id/dianji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="inhap"
-        android:textSize="30sp"
-        android:textColor="#FFFFFF"/>
-    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
-        android:id="@+id/video_player"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:background="#000000"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="点我查看详情"/>
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/video_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/image_cover"
+        android:id="@+id/dianji"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+        android:layout_height="200dp"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="bottom"/>
+    <ImageView
+        android:id="@+id/animation"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/hart"
+        android:layout_gravity="center"
+        android:alpha="0"
+        android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/image_cover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</FrameLayout>
