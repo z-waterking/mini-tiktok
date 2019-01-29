@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.zhuzai.homework.zhuzai.homePage.HomePage;
 //import com.zhuzai.homework.zhuzai.mePage.MePage;
+import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
 
@@ -66,12 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Fragment homePageFragment = new HomePage();
         Fragment recommendPageFragment = new RecommendPage();
         Fragment messagePageFragment = new MessagePage();
-//        Fragment mePageFragment = new MePage();
+        Fragment mePageFragment = new MePage();
         list = new ArrayList<>();
         list.add(homePageFragment);
         list.add(recommendPageFragment);
         list.add(messagePageFragment);
-//        list.add(mePageFragment);
+        list.add(mePageFragment);
 
         myPagerAdpter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -143,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                //   setSelected(1);
 //                viewPager.setCurrentItem(3,false);
 //
-                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
-                startActivity(it2);
+//                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
+//                startActivity(it2);
                 break;
             default:break;
         }
