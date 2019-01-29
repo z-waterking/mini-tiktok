@@ -19,10 +19,15 @@ import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
 
+
 import com.zhuzai.homework.zhuzai.recordsPage.CustomCameraActivity;
 import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
 
 import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
+
+import com.zhuzai.homework.zhuzai.recordsPage.CustomCameraActivity;
+import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,8 +140,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tab_aboutme:
+
                 about.setTextColor(getResources().getColor(R.color.tab_press));
                 viewPager.setCurrentItem(3,false);
+
+//                about.setTextColor(getResources().getColor(R.color.tab_press));
+//                //   setSelected(1);
+                viewPager.setCurrentItem(3,false);
+//
+//                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
+//                startActivity(it2);
+
                 break;
             default:break;
         }

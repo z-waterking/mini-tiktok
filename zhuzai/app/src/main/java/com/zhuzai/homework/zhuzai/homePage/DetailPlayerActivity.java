@@ -67,8 +67,11 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         //TODO: ZSF 申请读取手机状态的权限，预定打开时将所有权限全部申请完成
 //        TelephonyManager TelephonyMgr = (TelephonyManager) getApplicationContext().getSystemService(TELEPHONY_SERVICE);
 //        my_user_id = TelephonyMgr.getDeviceId();
-        my_user_id = "zsf";
-//        loadCover(detailPlayer, url_image);
+
+        my_user_id = "865873038279224";
+        ImageView imageView = new ImageView(this);
+        loadCover(imageView, url_image);
+        detailPlayer.setThumbImageView(imageView);
         initVideoBuilderMode();
         //初始化RecyclerView
         initRecyclerView();
@@ -103,7 +106,8 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
                 //接收到返回值，开始进行处理。
                 Upload_Response res = response.body();
                 if(res.isIssuccess()){
-                    Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_LONG).show();
+                    System.out.println("Upload Sequence OK");
+//                    Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -115,10 +119,14 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         NetworkUtils.getResponseWithRetrofitAsync_Recommend_Feed_by_video_url(new Callback<Recommend_Feed_Response>() {
             @Override public void onResponse(Call<Recommend_Feed_Response> call, Response<Recommend_Feed_Response> response) {
                 //接收到返回值，开始进行处理。
-                Recommend_Feed_Response recommend_feeds = response.body();
-                mFeeds = recommend_feeds.getRecommend_feeds();
-                mAdapter.update_Recommend_Feeds(mFeeds);
-                mRv.setAdapter(mAdapter);
+                try{
+                    Recommend_Feed_Response recommend_feeds = response.body();
+                    mFeeds = recommend_feeds.getRecommend_feeds();
+                    mAdapter.update_Recommend_Feeds(mFeeds);
+                    mRv.setAdapter(mAdapter);
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
             @Override public void onFailure(Call<Recommend_Feed_Response> call, Throwable t) {
@@ -198,6 +206,7 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         it.putExtra("image_url", image_url);
         it.putExtra("student_id", student_id);
         startActivity(it);
+//        onDestroy();
     }
 
 }
