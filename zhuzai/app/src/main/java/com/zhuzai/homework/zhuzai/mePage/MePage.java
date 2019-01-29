@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.support.v7.app.AlertDialog;
 =======
+=======
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 import android.util.Log;
 >>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 import android.view.LayoutInflater;
@@ -24,6 +27,9 @@ import com.zhuzai.homework.zhuzai.R;
 =======
 import java.lang.annotation.Target;
 
+<<<<<<< HEAD
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
+=======
 >>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 public class MePage extends BaseFragment {
     private Button edit_btn;
@@ -139,6 +145,9 @@ public class MePage extends BaseFragment {
 
 
 
+<<<<<<< HEAD
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
+=======
 >>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
     }
 }

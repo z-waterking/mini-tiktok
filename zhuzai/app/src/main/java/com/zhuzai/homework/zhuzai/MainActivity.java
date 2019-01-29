@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //
                 Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
                 startActivity(it2);
+<<<<<<< HEAD
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
+=======
 >>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
                 break;
             default:break;

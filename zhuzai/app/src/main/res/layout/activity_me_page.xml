@@ -92,7 +92,11 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:src="@drawable/mypage_bg_a5"/>
+=======
+        android:src="@drawable/mypage_bg_a"/>
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 =======
         android:src="@drawable/mypage_bg_a"/>
 >>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
