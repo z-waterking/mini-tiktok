@@ -135,8 +135,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tab_aboutme:
+<<<<<<< HEAD
                 about.setTextColor(getResources().getColor(R.color.tab_press));
                 viewPager.setCurrentItem(3,false);
+=======
+//                about.setTextColor(getResources().getColor(R.color.tab_press));
+//                //   setSelected(1);
+//                viewPager.setCurrentItem(3,false);
+//
+                Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
+                startActivity(it2);
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
                 break;
             default:break;
         }

@@ -65,9 +65,15 @@ public class DetailPlayerActivity extends GSYBaseActivityDetail<StandardGSYVideo
         detailPlayer.getTitleTextView().setVisibility(View.GONE);
         detailPlayer.getBackButton().setVisibility(View.GONE);
         //TODO: ZSF 申请读取手机状态的权限，预定打开时将所有权限全部申请完成
+<<<<<<< HEAD
 //        TelephonyManager TelephonyMgr = (TelephonyManager) getApplicationContext().getSystemService(TELEPHONY_SERVICE);
 //        my_user_id = TelephonyMgr.getDeviceId();
         my_user_id = "zsf";
+=======
+        TelephonyManager TelephonyMgr = (TelephonyManager) getApplicationContext().getSystemService(TELEPHONY_SERVICE);
+        my_user_id = TelephonyMgr.getDeviceId();
+//        my_user_id = "zsf";
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 //        loadCover(detailPlayer, url_image);
         initVideoBuilderMode();
         //初始化RecyclerView

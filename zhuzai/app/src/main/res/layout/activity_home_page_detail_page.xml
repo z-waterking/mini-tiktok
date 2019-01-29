@@ -32,8 +32,14 @@
         android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+<<<<<<< HEAD
     android:text="123"
     android:textSize="16sp" />
+=======
+        android:layout_gravity="center"
+    android:text="123"
+    android:textSize="30sp" />
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"

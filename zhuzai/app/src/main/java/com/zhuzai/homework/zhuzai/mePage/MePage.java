@@ -4,7 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.v7.app.AlertDialog;
+=======
+import android.util.Log;
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,11 @@ import com.zhuzai.homework.zhuzai.BaseFragment;
 import com.zhuzai.homework.zhuzai.MainActivity;
 import com.zhuzai.homework.zhuzai.R;
 
+<<<<<<< HEAD
+=======
+import java.lang.annotation.Target;
+
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
 public class MePage extends BaseFragment {
     private Button edit_btn;
     private SharedPreferences mPreferences;
@@ -26,6 +35,7 @@ public class MePage extends BaseFragment {
     private EditText fale;
     private EditText say;
 
+<<<<<<< HEAD
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.activity_me_page, container, false);
@@ -35,6 +45,23 @@ public class MePage extends BaseFragment {
         mypage_name.setText(mPreferences.getString("name",""));
         mEditor = mPreferences.edit();
         edit_btn.setOnClickListener(new View.OnClickListener() {
+=======
+    private ImageView imageView;
+    private ImageView imageViewHead;
+
+    //    public static MainActivity mainactivity;
+    private View view;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view= inflater.inflate(R.layout.activity_me_page, container, false);
+        imageView=view.findViewById(R.id.me_page_bg);
+        imageViewHead=view.findViewById(R.id.mypage_headshot);
+        initView();
+        return view;
+    }
+    private void initView() {
+        imageView.setOnClickListener(new View.OnClickListener() {
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder alertDialog7 = new AlertDialog.Builder(getActivity());
@@ -69,10 +96,49 @@ public class MePage extends BaseFragment {
                     }
                 });
 
+<<<<<<< HEAD
 
             }
         });
 
         return view;
+=======
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                //    设置Title的图标
+//                builder.setIcon(R.drawable.ic_launcher);
+                //    设置Title的内容
+                builder1.setTitle("改变头像");
+                //    设置Content来显示一个信息
+                builder1.setMessage("确定改变头像吗？");
+                //    设置一个PositiveButton
+                builder1.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d(":", "sss确定");
+                        Resources res=getResources();
+                        int count=(int)(1+Math.random()*(8-1+1));
+                        String countString=String.valueOf(count);
+                        Log.d("countString",countString);
+                        String imgname = "mypage_headshot_a" + countString;
+                        System.out.print("imgname"+imgname);
+                        int Res=  res.getIdentifier(imgname,"drawable","com.zhuzai.homework.zhuzai");
+                        Log.d("int", String.valueOf(Res));
+                        Log.d("img",imgname);
+                        imageViewHead.setImageDrawable(getResources().getDrawable(Res));
+                    }});
+                                             //    设置一个NegativeButton
+                builder1.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { }});
+                //    显示出该对话框
+                builder1.show();
+                }
+        }
+        );
+
+
+
+>>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
     }
 }
