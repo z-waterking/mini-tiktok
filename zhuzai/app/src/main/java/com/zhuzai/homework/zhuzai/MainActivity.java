@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhuzai.homework.zhuzai.homePage.HomePage;
-//import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
