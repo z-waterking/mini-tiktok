@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhuzai.homework.zhuzai.homePage.HomePage;
-import com.zhuzai.homework.zhuzai.mePage.MePage;
+//import com.zhuzai.homework.zhuzai.mePage.MePage;
 import com.zhuzai.homework.zhuzai.messagePage.MessagePage;
 import com.zhuzai.homework.zhuzai.recommendPage.RecommendPage;
 
@@ -26,6 +26,8 @@ import com.zhuzai.homework.zhuzai.recordsPage.FaceDetect_MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.http.HEAD;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -64,12 +66,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Fragment homePageFragment = new HomePage();
         Fragment recommendPageFragment = new RecommendPage();
         Fragment messagePageFragment = new MessagePage();
-        Fragment mePageFragment = new MePage();
+//        Fragment mePageFragment = new MePage();
         list = new ArrayList<>();
         list.add(homePageFragment);
         list.add(recommendPageFragment);
         list.add(messagePageFragment);
-        list.add(mePageFragment);
+//        list.add(mePageFragment);
 
         myPagerAdpter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -135,20 +137,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tab_aboutme:
-<<<<<<< HEAD
                 about.setTextColor(getResources().getColor(R.color.tab_press));
                 viewPager.setCurrentItem(3,false);
-=======
 //                about.setTextColor(getResources().getColor(R.color.tab_press));
 //                //   setSelected(1);
 //                viewPager.setCurrentItem(3,false);
 //
                 Intent it2 = new Intent(this, FaceDetect_MainActivity.class);
                 startActivity(it2);
-<<<<<<< HEAD
->>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
-=======
->>>>>>> parent of 1a3b405... mePage后端对接，推荐列表完善
                 break;
             default:break;
         }
