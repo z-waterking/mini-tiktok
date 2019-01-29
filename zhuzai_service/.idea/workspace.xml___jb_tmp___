@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="75c508e6-7bf7-4ca8-92af-bffbc6951e53" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/../气象舆情页面展示/static/css/dashboard.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../气象舆情页面展示/static/js/sidebar.js" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-4.0.0/docs/4.0/examples/dashboard/index.html" afterPath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-4.0.0/docs/4.0/examples/dashboard/index.html" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/CHANGELOG" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/bootstrap-paginator.jquery.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/build.sh" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/build/bootstrap-paginator.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/bootstrap-responsive.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/bootstrap-responsive.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/bootstrap.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/bootstrap.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/bootstrapv3.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/bootstrapv3.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/documentation.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/arta.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/ascetic.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/brown_paper.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/brown_papersq.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/dark.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/default.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/far.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/github.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/googlecode.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/idea.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/ir_black.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/magula.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/monokai.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/pojoaque.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/pojoaque.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/rainbow.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/school_book.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/school_book.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/solarized_dark.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/solarized_light.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/sunburst.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/tomorrow-night-blue.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/tomorrow-night-bright.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/tomorrow-night-eighties.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/tomorrow-night.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/tomorrow.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/vs.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/xcode.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/highlight.js/zenburn.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/css/qunit-1.11.0.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/documentation/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/img/glyphicons-halflings-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/img/glyphicons-halflings.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/img/illustration.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/bootstrap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/bootstrap.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/bootstrapv3.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/highlight.pack.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/jquery-1.9.1.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/jquery.history.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/lib/qunit-1.11.0.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/src/bootstrap-paginator.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/test/test.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/bootstrap-paginator-master/test/testv3.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/main.py" afterPath="$PROJECT_DIR$/../气象舆情页面展示/main.py" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/mysql.py" afterPath="$PROJECT_DIR$/../气象舆情页面展示/mysql.py" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/static/js/page.js" afterPath="$PROJECT_DIR$/../气象舆情页面展示/static/js/page.js" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/static/js/search.js" afterPath="$PROJECT_DIR$/../气象舆情页面展示/static/js/search.js" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/templates/detail.html" afterPath="$PROJECT_DIR$/../气象舆情页面展示/templates/detail.html" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/templates/homepage.html" afterPath="$PROJECT_DIR$/../气象舆情页面展示/templates/homepage.html" />
+      <change beforePath="$PROJECT_DIR$/../气象舆情页面展示/templates/index.html" afterPath="" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mysql.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../气象舆情页面展示" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/mysql.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zhuzai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhuzai" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../气象舆情页面展示/mysql.py" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="mysql" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="zhuzai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mysql.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.mysql" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="75c508e6-7bf7-4ca8-92af-bffbc6951e53" name="Default" comment="" />
+      <created>1548595634619</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1548595634619</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32897604" sideWeight="0.50208336" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
