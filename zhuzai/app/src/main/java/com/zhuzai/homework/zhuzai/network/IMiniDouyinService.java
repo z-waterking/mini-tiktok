@@ -8,7 +8,6 @@ import com.zhuzai.homework.zhuzai.bean.FeedResponse;
 import com.zhuzai.homework.zhuzai.bean.PostVideoResponse;
 import com.zhuzai.homework.zhuzai.bean.Recommend_Feed_Response;
 import com.zhuzai.homework.zhuzai.bean.Upload_Response;
-import com.zhuzai.homework.zhuzai.bean.User_Draw;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -54,8 +53,5 @@ public interface IMiniDouyinService {
             @Query("video_url") String video_url,
             @Query("user_id") String user_id
     );
-    //请求自己的用户画像
-    @GET("get_me") Call<User_Draw> user_draw(
-            @Query("user_id") String user_id
-    );
+
 }
