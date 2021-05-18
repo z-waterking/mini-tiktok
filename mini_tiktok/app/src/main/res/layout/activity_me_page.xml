@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#161823">
+    <!--我的页面，背景图，点击可以下拉，（拍摄,上传图片 或者选择drawable中的图片）更改图片-->
+    <ImageView
+        android:id="@+id/me_page_bg"
+        android:layout_width="match_parent"
+        android:layout_height="216dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mypage_bg_a1" />
+
+    <!--我的头像，点击左侧头像，可以更改头像，拍摄,上传图片 或者选择drawable中的图片，点击右侧可以编辑我的名字。（抖音号唯一不可编辑）-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:id="@+id/mypage_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp">
+            <com.mini_tiktok.homework.mini_tiktok.widget.CircleImageView
+                android:id="@+id/mypage_headshot"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mypage_headshot_a1"
+                />
+        </FrameLayout>
+        <TextView
+            android:textColor="#cccccc"
+            android:text="荣荣"
+            android:id="@+id/mypage_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/mypage_header"
+            android:textSize="15sp"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="12dp"
+            />
+        <TextView
+            android:textColor="#cccccc"
+            android:layout_below="@id/mypage_name"
+            android:layout_toRightOf="@+id/mypage_header"
+            android:id="@+id/mypage_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/mypage_name"
+            android:text="抖音号 ：1965473710"
+            android:textSize="13sp"
+            />
+        <Button
+            android:textColor="#cccccc"
+            android:id="@+id/mypage_ziliao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="17dp"
+            android:textSize="12sp"
+            android:background="@color/bottom_container_bg"
+            android:text="编辑资料"
+            />
+    </RelativeLayout>
+
+    <!--三个IMG 用来展示推荐结果，取到推荐的图片，进行展示-->
+
+    <TextView
+        android:textColor="#cccccc"
+        android:text="词云图展示"
+        android:id="@+id/ciyuntu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="12dp"
+        />
+
+    <ImageView
+        android:id="@+id/word_cloud"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mypage_bg_a3"/>
+
+    <TextView
+        android:textColor="#cccccc"
+        android:text="我的浏览轨迹"
+        android:id="@+id/tuijian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="12dp"
+        />
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mypage_bg_a4"/>
+
+</LinearLayout>
+</ScrollView>

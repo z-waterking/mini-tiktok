@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#161823"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+
+
+    <FrameLayout
+        android:id="@+id/iv_avatar_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp">
+
+        <com.mini_tiktok.homework.mini_tiktok.widget.CircleImageView
+            android:id="@+id/massage_pic"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:id="@+id/robot_notice"
+            android:layout_width="26dp"
+            android:layout_height="13dp"
+            android:src="@drawable/im_icon_notice_official"
+            android:layout_gravity="end|bottom"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+
+    <TextView
+        android:textColor="#cccccc"
+        android:text="抖音小助手"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_avatar_header"
+        android:textSize="15sp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="12dp"
+        />
+    <TextView
+        android:textColor="#cccccc"
+        android:layout_below="@id/title"
+        android:layout_toRightOf="@+id/iv_avatar_header"
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/title"
+        android:text="douchuhaoshengy"
+        android:textSize="13sp"
+        />
+
+    <TextView
+        android:textColor="#cccccc"
+        android:id="@+id/massage_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="17dp"
+        android:textSize="12sp"
+        android:text="12-5"
+        />
+
+</RelativeLayout>
